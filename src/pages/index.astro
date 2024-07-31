@@ -1,0 +1,31 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Welcome to Astro.">
+	<main>
+		<h3>Turso Counter</h3>
+		<div class="stats shadow">
+			<div class="stat">
+				<div class="stat-title">Counter</div>
+				<div id="counter" class="stat-value" hx-get="/htmx/counter" hx-trigger="load"></div>
+				<div class="stat-desc">Click to increment / decrement the db counter</div>
+			</div>
+		</div>
+		<br>
+		<button
+			class="btn btn-primary"
+			hx-post="/htmx/increment"
+			hx-trigger="click"
+			hx-target="#counter"
+			hx-swap="innerHTML">+</button
+		>
+		<button
+			class="btn btn-secondary"
+			hx-post="/htmx/decrement"
+			hx-trigger="click"
+			hx-target="#counter"
+			hx-swap="innerHTML">-</button
+		>
+	</main>
+</Layout>
