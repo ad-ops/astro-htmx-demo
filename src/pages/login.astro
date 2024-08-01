@@ -1,0 +1,32 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { getSession } from "auth-astro/server";
+
+const session = await getSession(Astro.request);
+---
+
+<Layout title="Login page">
+    <main>
+        {session ? <p>Welcome {session.user?.name}</p> : <p>Not logged in</p>}
+        <button class="btn" id="login">Login</button>
+        <button class="btn" id="logout">Logout</button>
+        <br />
+        <p>
+            You can try to go to the
+            <a class="link link-primary" href="/secret">secret</a> if you are logged
+            in...
+        </p>
+
+        <script>
+            const { signIn, signOut } = await import("auth-astro/client");
+            const loginButton = document.querySelector<HTMLInputElement>("#login");
+            if (loginButton) {
+                loginButton.onclick = () => signIn("github");
+            }
+            const logoutButton = document.querySelector<HTMLInputElement>("#logout");
+            if (logoutButton) {
+              logoutButton.onclick = () => signOut();
+            }
+        </script>
+    </main>
+</Layout>
