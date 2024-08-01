@@ -1,0 +1,15 @@
+---
+import Layout from "./Layout.astro";
+import { getSession } from "auth-astro/server";
+
+interface Props {
+    title: string;
+}
+
+const { title } = Astro.props;
+const session = await getSession(Astro.request);
+---
+
+<Layout title={title}>
+    {session ? <slot /> : <p>You are not allowed to see this page.</p>}
+</Layout>
