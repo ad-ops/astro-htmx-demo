@@ -1,31 +1,21 @@
 ---
+export const prerender = true;
+
 import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="Welcome to Astro.">
 	<main>
-		<h3>Turso Counter</h3>
-		<div class="stats shadow">
-			<div class="stat">
-				<div class="stat-title">Counter</div>
-				<div id="counter" class="stat-value" hx-get="/hx/counter" hx-trigger="load"></div>
-				<div class="stat-desc">Click to increment / decrement the db counter</div>
-			</div>
-		</div>
+		<h1 class="text-4xl">Astro HTMX Demo</h3>
+		<p>
+			This is a demo of Astro with HTMX with the following demos:
+		</p>
 		<br>
-		<button
-			class="btn btn-primary"
-			hx-post="/hx/increment"
-			hx-trigger="click"
-			hx-target="#counter"
-			hx-swap="innerHTML">+</button
-		>
-		<button
-			class="btn btn-secondary"
-			hx-post="/hx/decrement"
-			hx-trigger="click"
-			hx-target="#counter"
-			hx-swap="innerHTML">-</button
-		>
+		<p>
+			<a class="link link-secondary" href="/count">Counter</a>: Keep a counter in a database.
+		</p>
+		<p>
+			<a class="link link-secondary" href="/events">Events</a>: SSE (Server-Sent Events) with HTMX.
+		</p>
 	</main>
 </Layout>

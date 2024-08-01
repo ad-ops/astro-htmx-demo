@@ -1,0 +1,32 @@
+---
+export const prerender = true;
+
+import Layout from "../layouts/Layout.astro";
+---
+<Layout title="Events">
+    <main>
+        <h1 class="text-4xl">Turso Counter</h3>
+		<div class="stats shadow">
+			<div class="stat">
+				<div class="stat-title">Counter</div>
+				<div id="counter" class="stat-value" hx-get="/hx/counter" hx-trigger="load"></div>
+				<div class="stat-desc">Click to increment / decrement the db counter</div>
+			</div>
+		</div>
+		<br>
+		<button
+			class="btn btn-primary"
+			hx-post="/hx/increment"
+			hx-trigger="click"
+			hx-target="#counter"
+			hx-swap="innerHTML">+</button
+		>
+		<button
+			class="btn btn-secondary"
+			hx-post="/hx/decrement"
+			hx-trigger="click"
+			hx-target="#counter"
+			hx-swap="innerHTML">-</button
+		>
+    </main>
+</Layout>

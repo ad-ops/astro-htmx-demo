@@ -1,0 +1,15 @@
+---
+export const prerender = true;
+
+import Layout from "../layouts/Layout.astro";
+
+---
+<Layout title="Events">
+    <main>
+        <h1 class="text-4xl">Events being triggered here...</h1>
+        <div hx-ext="sse" sse-connect="/hx/events" sse-swap="message" sse-close="closing">
+            Contents of this box will be updated in real time
+            with every SSE message received from the chatroom.
+        </div>
+    </main>
+</Layout>
