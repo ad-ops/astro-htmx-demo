@@ -1,0 +1,13 @@
+---
+export const partial = true;
+
+import { turso } from '../../turso';
+const counterResult = await turso.execute(`
+    UPDATE counters 
+    SET counter = counter + 1 
+    WHERE id = 1 
+    RETURNING *
+`);
+const count = counterResult.rows[0]["counter"];
+---
+{count}

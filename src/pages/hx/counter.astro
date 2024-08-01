@@ -2,8 +2,7 @@
 export const partial = true;
 
 import { turso } from '../../turso';
-const counterResult = await turso.execute('SELECT TOP 1 counter FROM counter');
-
+const counterResult = await turso.execute('SELECT counter FROM counters WHERE id = 1');
 const count = counterResult.rows[0]["counter"];
 ---
 {count}
